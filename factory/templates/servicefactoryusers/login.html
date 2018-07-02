@@ -1,0 +1,55 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/maquetacion.css'%}">
+	<script>
+		document.getElementById('myform').reset();
+	</script>
+</head>
+<body>
+	<div class="jumbotron vertical-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-4 col-md-offset-4">
+					<div class="logo">
+						<img class="logo" src="static/img/orange_logo.svg">
+					</div>
+
+					<div class="titulo">
+						<p class="h2">Service Factory</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4">
+
+					<form id="myform" class="formulario" method="POST" action = "{% url 'login' %}">
+						{% csrf_token %}
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></span>
+								<input type="text" class="form-control" id="id_usuario" placeholder="Usuario" name = "username"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
+								<input type="password" class="form-control" id="id_contraseña" placeholder="Contraseña" name = "password">
+							</div>
+						</div>
+
+						<button type="submit" class="btn btn-primary center-block" value="login">Entrar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>

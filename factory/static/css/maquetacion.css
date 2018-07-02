@@ -1,0 +1,211 @@
+@font-face {
+    font-family: 'Helvetica Neue LT Std 45 Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Helvetica Neue LT Std 45 Light'), 
+    url('../fuente/HelveticaNeueLTStd Lt.woff') 
+    format('woff');
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: table;
+    letter-spacing: 1px
+}
+body{
+    font-size: 12px;
+    background-color:white;
+    font-family: "Helvetica Neue LT Std 45 Light";
+    
+}
+span{
+    font-size: 12px;
+}
+/*LOGIN*/
+.jumbotron{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    background: white;
+}
+
+.container {
+    display: inline-block;
+    text-align: left;
+}
+
+.logo {
+
+    float: left;
+}
+.titulo{
+    float: left;
+    color: #555;
+    margin-left: 10px;
+}
+.btn-primary{
+    background-color: #f60;
+    color: white;
+    border: none;
+}
+.btn-primary:hover{
+    background-color: black;
+    color: white;
+}
+.input-group-addon{
+    min-width: 40px;
+}
+/*NAVBAR*/
+.navbar-default .navbar-collapse{
+    background-color: white;
+}
+.navbar{
+    min-height: 80px;
+    background-color: white;
+    margin-bottom: 10px;
+}
+.navbar-brand>img{
+    display: inline;
+    float: left;
+}
+.navbar-toggle{
+    margin-top: 27px;
+    margin-bottom: 28px;
+    margin-left: 10px;
+}
+.navbar-header{
+    min-height: 80px;
+    display: flex;justify-content: center;
+}
+.lista-navbar{
+    margin-top: 25px;
+}
+.navbar-right{
+    margin-right: 20px;
+}
+.navbar-right a:hover{
+    text-decoration: underline!important;
+}
+.titulo-index {
+    margin-top: 0px;
+    float: left;
+}
+.subtitulo-index{
+    float: left;
+    margin-top: 8px;
+    margin-left: 10px;
+}
+.fa-user, .fa-sign-out{
+    margin-right: 5px;
+}
+.boton-anterior{ 
+    float: left; 
+    font-size: 50px; 
+    width: 70px; 
+    height: 90px;
+    border: 0px;
+    background-color: white;
+}
+.navbar-brand{
+    height: inherit;
+}
+.navbar-brand p{
+    text-align: center;
+
+}
+/*CONTENIDO*/
+.row{
+    width: 100%;
+}
+.container-proyectos, .container-tareas, .container-horas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+    width: 100%
+}
+.proyecto, .tarea{
+     margin:30px 10px 30px 10px;
+    background-color: #f60;
+    text-align: center;
+    min-height: 50px;
+    min-width: 270px;
+    padding: 16px 0px;
+    color: white;
+    border-radius: 10px;
+    border-style: none;
+    
+}
+.boton{
+display: flex;
+    justify-content: center;
+}
+.proyecto p, .tarea p{
+    margin: 0px;
+}
+.proyecto:hover, .tarea:hover{
+    background-color: #333;
+    
+}
+.proyecto:focus, .tarea:focus, .boton-anterior{
+    outline: none;
+}
+
+.boton-anterior p:hover{
+   border-bottom:1px solid #333;
+}
+.boton-anterior p{
+    float: right;
+    margin-left: 10px;
+}
+
+.registrar{
+    background-color: #f60;
+    color: white;
+    border-style: none;
+    padding: 5px 12px 5px 12px;
+    margin-bottom: 20px;
+}
+.registrar p{
+    margin-bottom: 0px;
+}
+.registrar:focus{
+    outline: none;
+}
+.registrar:hover{
+    background-color:#333;
+}
+.horas{
+    background-color: #ffebdd;
+    display:flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+.input-lg{
+    width: 80px;
+    text-align: center;
+}
+#navbar_movil{
+    display: none;
+}
+/*DATEPICKER*/
+.ui-state-highlight, .ui-widget-content .ui-state-highlight{
+    background-color: #ffebdd;
+    border: 0px;
+    color: black;
+}
+.ui-state-active, .ui-widget-content .ui-state-active{
+    background-color: #ffebdd;
+    border: 1px solid #f60;
+    color: black;
+}
+#datepicker{
+    text-align: center;
+}
+@media screen and (max-width: 364px) {
+    .h3{
+        font-size: 21px;
+    }
+}
