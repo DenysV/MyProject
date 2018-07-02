@@ -3,8 +3,9 @@ from .models import Tarea, Project
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
-
+name = ""
 def login(request):
+    global name
     username = request.POST.get('username', False)
     password = request.POST.get('password', False)
     user = authenticate(username = username, password = password)
@@ -23,10 +24,9 @@ def index(request, pk):
         proj = Project.objects.get(pk = pk)
     except Project.DoesNotExist:
         raise Http404("Project does not exist")
-    project_name = get_object_or_404(Project, pk=pk)
-    #print(project_name)
-    tareas = Tareas.objects.filter(project = project)
-    return render(request, 'servicefactoryusers/tareas.html',  context = { 'project' : project })
+    project = get_object_or_404(Project, pk=pk)
+    tareas = Tarea.objects.filter(author = request.user, project = project)
+    return render(request, 'servicefactoryusers/tareas.html',  context = { 'tareas' : tareas })
     #else return(render, 'servicefactoryusers/index.html')
 
 

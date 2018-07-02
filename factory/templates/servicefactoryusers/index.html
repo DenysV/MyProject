@@ -62,8 +62,8 @@
 
 			{% for project in projects %}
     	<div class="col-md-12 boton">
-	      <button class=" proyecto" onclick="window.location.href=">
-	        <p class="h4"><a href="{% url 'index' %}"> {{ project.name }} </a></p>
+	      <button class=" proyecto" onclick="window.location.href='{% url 'index' pk=project.pk %}'">
+	        <p class="h4"> {{ project.name }} </p>
 	      </button>
 	  </div>
 			{% endfor %}
