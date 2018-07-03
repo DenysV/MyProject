@@ -1,9 +1,8 @@
 from django.conf.urls import url, include
 from . import views
-
 urlpatterns = [
-    url(r'^$', views.login, name = 'login'),
-    #url(r'^project/(?P<pk>\d+)/$', views.project_detail, name = 'project_detail'),
+    url(r'^login', views.login1, name = 'login1'),
     url(r'^index/(?P<pk>\d+)/$', views.index, name = 'index'),
-    #url(r'^accounts/invalid/$', views.login, name = 'invalid'),
+    url(r'^project/(?P<pk>\d+)/$', views.tarea, name = 'tarea'),
+    url(r'^horas/$', views.tarea_detail, name = 'tarea_detail'),
 ]

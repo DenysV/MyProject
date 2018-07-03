@@ -10,8 +10,18 @@
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 	<link rel="stylesheet" type="text/css" href={% static "css/maquetacion.css"%}>
-
+	<script scr = "jquery-3.3.1.min.js">
+		Date.prototype.toDateInputValue = (function(){
+			var local = new Date(this);
+			local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+			return local.toJSON().slice(0,10);
+		});
+		$(document).ready((){
+			$('#datepicker').val(new Date().toDateInputValue());
+		});
+	</script>
 </head>
+
 <nav class="navbar navbar-default" id="navbar_ordenador">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -38,13 +48,13 @@
 	    </div>
 	</nav>
 	<div  id="div_botonanterior_ordenador">
-    	<button class="boton-anterior" onclick="window.location.href='tareas.html'"><i class="fa fa-angle-left"></i></button>
+    	<button class="boton-anterior" onclick="window.location.href='login.html'"><i class="fa fa-angle-left"></i></button>
     </div>
 	<nav class="navbar navbar-default" id="navbar_movil" >
 		<div class="container-fluid">
 			<div class="navbar-header">
 
-					<button class="boton-anterior" onclick="window.location.href='tareas.html'"><i class="fa fa-angle-left"></i></button>
+					<button class="boton-anterior" onclick="window.location.href='login.html'"><i class="fa fa-angle-left"></i></button>
 
 				<a class="navbar-brand" href="#"><p class="h4">Orange</p><p class="h5">Service Factory</p></a>
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar_usuario_id">
@@ -62,18 +72,21 @@
 	    </div>
 	</nav>
 
+<form method="POST" action = "{% url 'tarea_detail' %}">
+	{% csrf_token %}
   <div class="container-fluid container-horas">
     <div class="row">
 	    <div class="col-md-4 col-md-offset-4 boton horas">
-	    	<p class="h3">Proyecto Orange: </p><p class="h3"> Tarea 1</p>
+	    	<p class="h3"> {{tarea.project}} </p><p class="h3"> {{tarea.name}}</p>
 	    </div>
+
     	<div class="col-md-4 col-md-offset-4 boton horas">
 	    	<div class="form-group">
 	    		<label class="control-label">Fecha:</label>
-	    		<input type="text" id="datepicker" name="">
+	    		<input type="date" id="datepicker" name="" value=>
 	    		<div class="horas" style="  ">
-		    		<input class="form-control input-lg" id="inputlg" type="number"  value="3"><p style="margin: 10px 3px 0px 3px">:</p>
-		    		<input class="form-control input-lg" id="inputlg" type="number"  value="30">
+		    		<input class="form-control input-lg" id="inputlg" type="number" min="0" max="7" value="0" name = "horas"><p style="margin: 10px 3px 0px 3px">:</p>
+		    		<input class="form-control input-lg" id="inputlg" type="number" min="1" max="59" value="0" name = "minutos">
 		    	</div>
 	    	</div>
 
@@ -83,9 +96,11 @@
 	       <p> Registrar </p>
 	      </button>
 	    </div>
-	</div>
-
+		</div>
   </div>
+
+</form>
+
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

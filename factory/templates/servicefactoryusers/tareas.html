@@ -63,25 +63,17 @@
   <div class="container-fluid container-tareas">
     <div class="row ">
 
-
 	    <div class="col-md-12 boton">
-	    	<p class="h3">Proyecto Orange</p>
+	    	<p class="h3">{{project.name}}</p>
 	    </div>
+
+		{% for tarea in tareas %}
     	<div class="col-md-12 boton">
-	      <button class="tarea" onclick="window.location.href='horas.html'">
-	        <p class="h4">Tarea 1</p>
+	      <button class="tarea" onclick="window.location.href='{% url 'tarea' pk=tarea.pk %}'">
+	        <p class="h4">{{ tarea.name }}</p>
 	      </button>
 	  </div>
-	  <div class="col-md-12 boton">
-	      <button class=" tarea" >
-	        <p class="h4">Tarea 2 </p>
-	      </button>
-	   </div>
-	   <div class="col-md-12 boton">
-	      <button class="tarea" >
-	       <p class="h4"> Tarea 3 </p>
-	      </button>
-	    </div>
+		{% endfor %}
 
     </div>
   </div>
