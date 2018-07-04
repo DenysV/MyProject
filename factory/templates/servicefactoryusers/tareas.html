@@ -36,7 +36,7 @@
 	    </div>
 	</nav>
 	<div  id="div_botonanterior_ordenador">
-    	<button class="boton-anterior" onclick="window.location.href='index.html'"><i class="fa fa-angle-left"></i></button>
+    	<button class="boton-anterior" onclick="window.location.href='{% url 'login1' %}'"><i class="fa fa-angle-left"></i></button>
     </div>
 	<nav class="navbar navbar-default" id="navbar_movil">
 		<div class="container-fluid">
@@ -54,7 +54,7 @@
 		    <div class="collapse navbar-collapse" id="navbar_usuario_id">
 
 		        <ul class="nav navbar-nav navbar-right lista-navbar ">
-			      <li><a href="#"><span class="fa fa-sign-out fa-lg"></span> Salir</a></li>
+			      <li><a href="login.html"><span class="fa fa-sign-out fa-lg"></span> Salir</a></li>
 			    </ul>
 		    </div>
 	    </div>
@@ -69,7 +69,7 @@
 
 		{% for tarea in tareas %}
     	<div class="col-md-12 boton">
-	      <button class="tarea" onclick="window.location.href='{% url 'tarea' pk=tarea.pk %}'">
+	      <button class="tarea" onclick="window.location.href='{% url 'tarea' pk=tarea.pk%}'">
 	        <p class="h4">{{ tarea.name }}</p>
 	      </button>
 	  </div>

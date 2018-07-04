@@ -5,7 +5,7 @@ class TareaEditForm(forms.ModelForm):
 
     class Meta:
         model = Tarea
-        fields = ('deadline', 'duration')
+        fields = ('duration',)
 '''
     horas = forms.IntegerField()
     minutos = forms.IntegerField()
