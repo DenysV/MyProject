@@ -12,6 +12,8 @@ from .form import TareaEditForm
 
 from django.utils import timezone
 
+from django.views.decorators.cache import never_cache
+
 time_implement = 0
 today = datetime.datetime.now().strftime("%Y-%m-%d")
 
@@ -21,6 +23,23 @@ def time(h,m):
 def timeformat(t):
     return t // 60, t % 60
 
+def home(request):
+    return redirect(request, 'servicefactoryusers/login.html')
+
+@never_cache
+@login_required
+def logout(request):
+    for key in list(request.session.keys()):
+        del request.session[key]
+    auth.logout(request)
+    return render(request, 'servicefactoryusers/login.html')
+
+def projects(request):
+    projects = Project.objects.filter(author = request.user)
+    #time_implement = 0
+    #return render(request, 'servicefactoryusers/index.html', { 'projects' : projects })
+
+@never_cache
 def login1(request):
     global time_implement
     username = request.POST.get('username', False)
@@ -31,11 +50,15 @@ def login1(request):
     if user is not None:
         login(request, user)
         projects = Project.objects.filter(author = user)
-        #time_implement = 0
         return render(request, 'servicefactoryusers/index.html', { 'projects' : projects })
     else:
         return render(request, 'servicefactoryusers/login.html')
+        '''
+                projects = Project.objects.filter(author = user)
+                return render(request, 'servicefactoryusers/index.html', {'projects' : projects })
+        '''
 
+@never_cache
 @login_required
 def index1(request, pk):
     try:
@@ -47,12 +70,15 @@ def index1(request, pk):
     print(project)
     return render(request, 'servicefactoryusers/tareas.html',  context = { 'tareas' : tareas })
 
+@never_cache
 @login_required
 def tarea(request, pk):
     tarea = get_object_or_404(Tarea, pk=pk)
     storage = messages.get_messages(request)
+    print("Hello!!!")
     return render(request, 'servicefactoryusers/horas.html', { 'tarea' : tarea, 'message' : storage })
 
+@never_cache
 @login_required
 def tarea_detail(request, pk):
     global time_implement
