@@ -1,17 +1,13 @@
+import datetime
 from django.db import models
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.contrib import auth, messages
-from .models import Tarea
-import datetime
-
 from .models import Tarea, Project
 from .form import TareaEditForm
-
 from django.utils import timezone
-
 from django.views.decorators.cache import never_cache
 
 time_implement = 0
@@ -53,10 +49,6 @@ def login1(request):
         return render(request, 'servicefactoryusers/index.html', { 'projects' : projects })
     else:
         return render(request, 'servicefactoryusers/login.html')
-        '''
-                projects = Project.objects.filter(author = user)
-                return render(request, 'servicefactoryusers/index.html', {'projects' : projects })
-        '''
 
 @never_cache
 @login_required
@@ -126,4 +118,4 @@ def tarea_detail(request, pk):
                 messages.warning(request, 'No puedo hacer esta tarea hoy. Por favor cambia duracion de la tarea.')
                 return redirect('tarea_detail', pk = tarea.pk)
                 #raise forms.ValidationError("No puedo hacer esta tarea hoy. Por favor, cambia el duracion o la fecha de la tarea!")
-    return render(request, 'servicefactoryusers/horas.html', context = { 'tarea' : tarea })
+    return render(request, 'servicefactoryusers/horas.html', context = { 'tarea' : tarea, 'today' : today })

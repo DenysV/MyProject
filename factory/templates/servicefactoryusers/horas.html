@@ -10,10 +10,22 @@
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 	<link rel="stylesheet" type="text/css" href={% static "css/maquetacion.css"%}>
+	<link rel="stylesheet" type="text/css" href="daterangepicker/daterangepicker.css">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script src="daterangepicker/moment.js"></script>
+	<script src="daterangepicker/daterangepicker.js"></script>
 	<script>
 
-	document.getElementById('MyDate').value = moment().format('YYYY-MM-DD');
+	var now = new Date()
 
+	$(function(){
+		$('#date').daterangepicker({
+			singleDatePicker: true,
+			locale: {
+				format: 'YYYY-MM-DD'
+			}
+		});
+	});
 	</script>
 </head>
 
@@ -85,12 +97,12 @@
   <div class="container-fluid container-horas">
     <div class="row">
 	    <div class="col-md-4 col-md-offset-4 boton horas">
-	    	<p class="h3"> {{tarea.project}} </p><p class="h3"> {{tarea.name}}</p>
+				<p class="h3"> {{tarea.project}} </p><p class="h3"> {{tarea.name}}</p>
 	    </div>
 			<div class="col-md-4 col-md-offset-4 boton horas">
-	    	<div class="form-group">
-	    		<label class="control-label">Fecha:</label>
-	    		<input id = "MyDate" type="date" value="">
+				<div class="form-group">
+	    		<label class="control-label">Fecha </label>
+	    		<input type="date" class="form-control" id = "date" name="date" placeholder="Date" value = '{{today}}'>
 	    		<div class="horas" style="  ">
 		    		<input class="form-control input-lg" id="inputlg" type="number" min="0" max="8" value="0" name = "horas"><p style="margin: 10px 3px 0px 3px">:</p>
 		    		<input class="form-control input-lg" id="inputlg" type="number" min="0" max="59" value="0" name = "minutos">
