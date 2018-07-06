@@ -16,6 +16,10 @@
 	<script src="daterangepicker/daterangepicker.js"></script>
 	<script>
 
+		function goBack(){
+			window.history.back();
+		}
+
 	var now = new Date()
 
 	$(function(){
@@ -45,7 +49,7 @@
 		    <div class="collapse navbar-collapse" id="navbar_usu_id">
 		      	<ul class="nav navbar-nav">
 		      		<li class="dropdown lista-navbar">
-				        <a href='/login'>
+				        <a href="{% url 'logout' %}">
 				          <p class="h3 titulo-index"> Service Factory </p><p class="subtitulo-index">Proyectos</p>
 				        </a>
 				    </li>
@@ -56,14 +60,16 @@
 		    </div>
 	    </div>
 	</nav>
+
+	
 	<div  id="div_botonanterior_ordenador">
-    	<button class="boton-anterior" onclick="window.location.href='/task'"><i class="fa fa-angle-left"></i></button>
+    	<button class="boton-anterior" onclick="goBack()"><i class="fa fa-angle-left"></i></button>
     </div>
 	<nav class="navbar navbar-default" id="navbar_movil" >
 		<div class="container-fluid">
 			<div class="navbar-header">
 
-					<button class="boton-anterior" onclick="window.location.href='/login'"><i class="fa fa-angle-left"></i></button>
+					<button class="boton-anterior" onclick="window.location.href={% url 'logout' %}"><i class="fa fa-angle-left"></i></button>
 
 				<a class="navbar-brand" href="https://www.orange.es/"><p class="h4">Orange</p><p class="h5">Service Factory</p></a>
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar_usuario_id">
@@ -75,7 +81,7 @@
 		    <div class="collapse navbar-collapse" id="navbar_usuario_id">
 
 		        <ul class="nav navbar-nav navbar-right lista-navbar ">
-			      <li><a href='/login'><span class="fa fa-sign-out fa-lg"></span> Salir</a></li>
+			      <li><a href="{% url 'logout' %}"><span class="fa fa-sign-out fa-lg"></span> Salir</a></li>
 			    </ul>
 		    </div>
 	    </div>

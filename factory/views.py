@@ -1,5 +1,6 @@
 import datetime
-from django.db import models
+from django.db import models, connections, transaction
+from django.core.cache import cache
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -8,9 +9,10 @@ from django.contrib import auth, messages
 from .models import Tarea, Project
 from .form import TareaEditForm
 from django.utils import timezone
-from django.views.decorators.cache import never_cache
+from django.views.decorators.cache import never_cache, cache_control
 
 time_implement = 0
+choose_project = ""
 today = datetime.datetime.now().strftime("%Y-%m-%d")
 
 def time(h,m):
@@ -22,20 +24,33 @@ def timeformat(t):
 def home(request):
     return redirect(request, 'servicefactoryusers/login.html')
 
-@never_cache
-@login_required
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='/accounts/login/')
+def flush():
+    cache.clear()
+    cursor = connections['cache_database'].cursor()
+    cursor.execute('DELETE FROM cache_table')
+    transaction.commit_unless_managed(using='cache_database')
+
+#@never_cache
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='/accounts/login/')
+def projects_back(request):
+    projects = Project.objects.filter(author = request.user)
+    return render(request, 'servicefactoryusers/index.html', { 'projects' : projects })
+
+#@never_cache
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='/accounts/login/')
 def logout(request):
     for key in list(request.session.keys()):
         del request.session[key]
+
     auth.logout(request)
     return render(request, 'servicefactoryusers/login.html')
 
-def projects(request):
-    projects = Project.objects.filter(author = request.user)
-    #time_implement = 0
-    #return render(request, 'servicefactoryusers/index.html', { 'projects' : projects })
+#@never_cache
 
-@never_cache
 def login1(request):
     global time_implement
     username = request.POST.get('username', False)
@@ -50,8 +65,9 @@ def login1(request):
     else:
         return render(request, 'servicefactoryusers/login.html')
 
-@never_cache
-@login_required
+#@never_cache
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='/accounts/login/')
 def index1(request, pk):
     try:
         proj = Project.objects.get(pk = pk)
@@ -60,20 +76,24 @@ def index1(request, pk):
     project = get_object_or_404(Project, pk=pk)
     tareas = Tarea.objects.filter(author = request.user, project = project)
     print(project)
+    choose_project = project
+    print('Otra vez', choose_project)
     return render(request, 'servicefactoryusers/tareas.html',  context = { 'tareas' : tareas })
 
-@never_cache
-@login_required
+#@never_cache
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='/accounts/login/')
 def tarea(request, pk):
     tarea = get_object_or_404(Tarea, pk=pk)
     storage = messages.get_messages(request)
     print("Hello!!!")
     return render(request, 'servicefactoryusers/horas.html', { 'tarea' : tarea, 'message' : storage })
 
-@never_cache
-@login_required
+#@never_cache
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='/accounts/login/')
 def tarea_detail(request, pk):
-    global time_implement
+    global time_implement, choose_project
     tarea = get_object_or_404(Tarea, pk=pk)
     if request.method == 'POST':
         horas = request.POST.get('horas', False)
@@ -107,7 +127,7 @@ def tarea_detail(request, pk):
                 tarea.duration = form.duration
                 tarea.deadline = date
                 #tarea.deadline = timezone.now()
-
+                choose_project = tarea.project
                 print(str(tarea.author), str(tarea.deadline), str(tarea.duration))
                 tarea.save()
 
@@ -119,3 +139,6 @@ def tarea_detail(request, pk):
                 return redirect('tarea_detail', pk = tarea.pk)
                 #raise forms.ValidationError("No puedo hacer esta tarea hoy. Por favor, cambia el duracion o la fecha de la tarea!")
     return render(request, 'servicefactoryusers/horas.html', context = { 'tarea' : tarea, 'today' : today })
+
+def go_back_tareas(request):
+        return redirect('servicefactoryusers/tareas.html')
