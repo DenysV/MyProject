@@ -21,9 +21,6 @@ def time(h,m):
 def timeformat(t):
     return t // 60, t % 60
 
-def home(request):
-    return redirect(request, 'servicefactoryusers/login.html')
-
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='/accounts/login/')
 def flush():
@@ -50,7 +47,6 @@ def logout(request):
     return render(request, 'servicefactoryusers/login.html')
 
 #@never_cache
-
 def login1(request):
     global time_implement
     username = request.POST.get('username', False)
@@ -60,7 +56,7 @@ def login1(request):
     print(user)
     if user is not None:
         login(request, user)
-        projects = Project.objects.filter(author = user)
+        projects = Project.objects.filter(author = request.user)
         return render(request, 'servicefactoryusers/index.html', { 'projects' : projects })
     else:
         return render(request, 'servicefactoryusers/login.html')
