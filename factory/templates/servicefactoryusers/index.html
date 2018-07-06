@@ -1,68 +1,10 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Service Factory</title>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/maquetacion.css' %}">
-	<link rel="stylesheet" type="text/css" href="daterangepicker/daterangepicker.css">
-	<script src="jquery-3.3.1.min.js"></script>
-	<script src="daterangepicker/moment.js"></script>
-	<script src="daterangepicker/daterangepicker.js"></script>
-	<script>
+{% extends "servicefactoryusers/pattern.html" %}
 
-		function goBack(){
-			window.history.back();
-		}
-
-	var now = new Date()
-
-	$(function(){
-		$('#date').daterangepicker({
-			singleDatePicker: true,
-			locale: {
-				format: 'YYYY-MM-DD'
-			}
-		});
-	});
-	</script>
-</head>
-	<nav class="navbar navbar-default" id="navbar_ordenador">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<div class="navbar-brand" href="https://www.orange.es/">
-					<img class="logo" src="static/img/orange_logo.svg">
-				</div>
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar_usu_id">
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			      </button>
-			</div>
-
-		    <div class="collapse navbar-collapse" id="navbar_usu_id">
-		      	<ul class="nav navbar-nav">
-		      		<li class="dropdown lista-navbar">
-				        <a href="{% url 'logout' %}">
-				          <p class="h3 titulo-index"> Service Factory </p><p class="subtitulo-index">Proyectos</p>
-				        </a>
-				    </li>
-		        </ul>
-		        <ul class="nav navbar-nav navbar-right lista-navbar ">
-			      <li><a href="{% url 'logout' %}"><span class="fa fa-power-off fa-lg"></span> Salir</a></li>
-			    </ul>
-		    </div>
-	    </div>
-	</nav>
-
-	
+{% block content %}
 	<nav class="navbar navbar-default" id="navbar_movil">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<div class="boton-anterior" >
-
 				</div>
 				<a class="navbar-brand" href="#"><p class="h4">Orange</p><p class="h5">Service Factory</p></a>
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar_usuario_id">
@@ -95,11 +37,4 @@
     </div>
 		{% endif %}
   </div>
-
-</body>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="static/js/maquetacion.js"></script>
-</body>
-</html>
+{% endblock %}
