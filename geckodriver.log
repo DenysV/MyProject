@@ -1,0 +1,74 @@
+1531136798939	geckodriver	INFO	geckodriver 0.21.0
+1531136798980	geckodriver	INFO	Listening on 127.0.0.1:32913
+1531136799065	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.HIZkZY2TzyPs"
+1531136810261	Marionette	INFO	Listening on port 41047
+1531136810320	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://sjrtp3-cdn.marketo.com/rtp-api/v1/rtp.js?aid=ubuntu1, line 4: ReferenceError: jQuery is not defined
+1531139398453	geckodriver	INFO	geckodriver 0.21.0
+1531139398565	geckodriver	INFO	Listening on 127.0.0.1:52653
+1531139399527	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.1jHpgffXWtR8"
+1531139411031	Marionette	INFO	Listening on port 41003
+1531139411110	Marionette	WARN	TLS certificate errors will be ignored for this session
+1531148329843	geckodriver	INFO	geckodriver 0.21.0
+1531148330138	geckodriver	INFO	Listening on 127.0.0.1:54481
+1531148330257	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.j2rW7y5wsYNQ"
+1531148342615	Marionette	INFO	Listening on port 38019
+1531148343152	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://127.0.0.1:8000/login.html, line 11: TypeError: document.getElementById(...) is null
+JavaScript error: http://127.0.0.1:8000/login.html, line 1: ReferenceError: back_block is not defined
+1531148351521	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/TelemetryFeed.jsm :: uninit :: line 493"  data: no] Stack trace: uninit()@resource://activity-stream/lib/TelemetryFeed.jsm:493
+onAction()@resource://activity-stream/lib/TelemetryFeed.jsm:451
+_middleware/</<()@resource://activity-stream/lib/Store.jsm:51
+Store/this[method]()@resource://activity-stream/lib/Store.jsm:29
+uninit()@resource://activity-stream/lib/Store.jsm:166
+uninit()@resource://activity-stream/lib/ActivityStream.jsm:318
+uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:79
+shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:187
+callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:2757
+observe()@resource://gre/modules/addons/XPIProvider.jsm:1672
+GeckoDriver.prototype.quit()@driver.js:3282
+despatch()@server.js:294
+execute()@server.js:268
+onPacket/<()@server.js:243
+onPacket()@server.js:242
+_onJSONObjectReady/<()@transport.js:500
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1531148581286	geckodriver	INFO	geckodriver 0.21.0
+1531148581368	geckodriver	INFO	Listening on 127.0.0.1:42291
+1531148582294	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.UiUPaj2he1DH"
+1531148597649	Marionette	INFO	Listening on port 45495
+1531148599015	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://127.0.0.1:8000/login.html, line 11: TypeError: document.getElementById(...) is null
+JavaScript error: http://127.0.0.1:8000/login.html, line 1: ReferenceError: back_block is not defined
+
+(/usr/lib/firefox/firefox:26788): dconf-WARNING **: 17:03:32.005: Unable to open /var/lib/snapd/desktop/dconf/profile/user: Permission denied
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1531150278109	geckodriver	INFO	geckodriver 0.21.0
+1531150278209	geckodriver	INFO	Listening on 127.0.0.1:60521
+1531150279177	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.i13NiuZfXhff"
+1531150292182	Marionette	INFO	Listening on port 39491
+1531150292317	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://127.0.0.1:8000/login.html, line 11: TypeError: document.getElementById(...) is null
+JavaScript error: http://127.0.0.1:8000/login.html, line 1: ReferenceError: back_block is not defined
+JavaScript error: http://127.0.0.1:8000/login.html, line 11: TypeError: document.getElementById(...) is null
+JavaScript error: http://127.0.0.1:8000/login.html, line 1: ReferenceError: back_block is not defined
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1531150342077	geckodriver	INFO	geckodriver 0.21.0
+1531150342097	geckodriver	INFO	Listening on 127.0.0.1:43099
+1531150342227	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.6zMRlvlW4FaR"
+1531150353740	Marionette	INFO	Listening on port 36131
+1531150353938	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://127.0.0.1:8000/login.html, line 11: TypeError: document.getElementById(...) is null
+JavaScript error: http://127.0.0.1:8000/login.html, line 1: ReferenceError: back_block is not defined
+JavaScript error: http://127.0.0.1:8000/projects/, line 26: ReferenceError: $ is not defined
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1531150387722	geckodriver	INFO	geckodriver 0.21.0
+1531150387738	geckodriver	INFO	Listening on 127.0.0.1:40083
+1531150387862	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.SbvXonZyPD4g"
+1531150394705	Marionette	INFO	Listening on port 38969
+1531150394794	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://127.0.0.1:8000/login.html, line 11: TypeError: document.getElementById(...) is null
+JavaScript error: http://127.0.0.1:8000/login.html, line 1: ReferenceError: back_block is not defined
+JavaScript error: http://127.0.0.1:8000/projects/, line 26: ReferenceError: $ is not defined
+[Parent 27794, Gecko_IOThread] WARNING: pipe error (56): Connection reset by peer: file /build/firefox-mzzHJ1/firefox-61.0+build3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping

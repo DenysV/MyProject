@@ -35,7 +35,7 @@
 
 		{% for tarea in tareas %}
     	<div class="col-md-12 boton">
-	      <button class="tarea" onclick="window.location.href='{% url 'tarea_detail' pk=tarea.pk%}'">
+	      <button class="tarea" onclick="window.location.href='{% url 'tarea_detail' pk=tarea.pk %}'">
 	        <p class="h4">{{ tarea.name }}</p>
 	      </button>
 	  </div>

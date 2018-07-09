@@ -21,20 +21,13 @@ def time(h,m):
 def timeformat(t):
     return t // 60, t % 60
 
-@cache_control(no_cache=True, must_revalidate=True, no_store=True)
-@login_required(login_url='/accounts/login/')
-def flush():
-    cache.clear()
-    cursor = connections['cache_database'].cursor()
-    cursor.execute('DELETE FROM cache_table')
-    transaction.commit_unless_managed(using='cache_database')
-
 #@never_cache
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='/accounts/login/')
 def projects_back(request):
     projects = Project.objects.filter(author = request.user)
-    return render(request, 'servicefactoryusers/index.html', { 'projects' : projects })
+    print(projects)
+    return render(request, 'servicefactoryusers/index.html', {'projects' : projects})
 
 #@never_cache
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
@@ -42,9 +35,15 @@ def projects_back(request):
 def logout(request):
     for key in list(request.session.keys()):
         del request.session[key]
-
     auth.logout(request)
-    return render(request, 'servicefactoryusers/login.html')
+
+    request.session.flush()
+    if hasattr(request, 'user'):
+        from django.contrib.auth.models import AnonymousUser
+        request.user = AnonymousUser()
+
+    return redirect('login1')
+    #return render(request, 'servicefactoryusers/login.html')
 
 #@never_cache
 def login1(request):
@@ -57,9 +56,8 @@ def login1(request):
     if user is not None:
         login(request, user)
         projects = Project.objects.filter(author = request.user)
-        return render(request, 'servicefactoryusers/index.html', { 'projects' : projects })
-    else:
-        return render(request, 'servicefactoryusers/login.html')
+        return redirect('projects_back')
+    return render(request, 'servicefactoryusers/login.html')
 
 #@never_cache
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
@@ -135,6 +133,15 @@ def tarea_detail(request, pk):
                 return redirect('tarea_detail', pk = tarea.pk)
                 #raise forms.ValidationError("No puedo hacer esta tarea hoy. Por favor, cambia el duracion o la fecha de la tarea!")
     return render(request, 'servicefactoryusers/horas.html', context = { 'tarea' : tarea, 'today' : today })
-
+'''
 def go_back_tareas(request):
         return redirect('servicefactoryusers/tareas.html')
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url='/accounts/login/')
+def flush():
+    cache.clear()
+    cursor = connections['cache_database'].cursor()
+    cursor.execute('DELETE FROM cache_table')
+    transaction.commit_unless_managed(using='cache_database')
+'''

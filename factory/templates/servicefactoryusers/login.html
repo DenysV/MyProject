@@ -10,8 +10,15 @@
 	<script>
 		document.getElementById('myform').reset();
 	</script>
+
+	<script type="text/text/javascript">
+		function back_block(){
+			windiw.history.forward(-1)
+		}
+	</script>
+
 </head>
-<body>
+<body onload="javascript:back_block();">
 	<div class="jumbotron vertical-center">
 		<div class="container">
 			<div class="row">
@@ -28,7 +35,7 @@
 			<div class="row">
 				<div class="col-md-4 col-md-offset-4">
 
-					<form id="myform" class="formulario" method="POST" action = "{% url 'login1' %}" autocomplete="off">
+					<form id="myform" class="formulario" method="POST" autocomplete="off">
 						{% csrf_token %}
 						<div class="form-group">
 							<div class="input-group">
@@ -43,7 +50,7 @@
 							</div>
 						</div>
 
-						<button type="submit" class="btn btn-primary center-block" value="login">Entrar</button>
+						<button type="submit" name="submit" class="btn btn-primary center-block" value="login" onclick="window.location.href={% url 'projects_back' %}">Entrar</button>
 					</form>
 				</div>
 			</div>
