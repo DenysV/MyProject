@@ -72,3 +72,42 @@ JavaScript error: http://127.0.0.1:8000/login.html, line 1: ReferenceError: back
 JavaScript error: http://127.0.0.1:8000/projects/, line 26: ReferenceError: $ is not defined
 [Parent 27794, Gecko_IOThread] WARNING: pipe error (56): Connection reset by peer: file /build/firefox-mzzHJ1/firefox-61.0+build3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
 *** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1531153432103	geckodriver	INFO	geckodriver 0.21.0
+1531153432144	geckodriver	INFO	Listening on 127.0.0.1:55371
+1531153433172	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.NFJ0rvQVuw05"
+1531153444490	Marionette	INFO	Listening on port 37807
+1531153444545	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://127.0.0.1:8000/login.html, line 11: TypeError: document.getElementById(...) is null
+JavaScript error: http://127.0.0.1:8000/login.html, line 1: ReferenceError: back_block is not defined
+JavaScript error: http://127.0.0.1:8000/projects/, line 26: ReferenceError: $ is not defined
+[Parent 28726, Gecko_IOThread] WARNING: pipe error (76): Connection reset by peer: file /build/firefox-mzzHJ1/firefox-61.0+build3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1531153473535	geckodriver	INFO	geckodriver 0.21.0
+1531153473539	geckodriver	INFO	Listening on 127.0.0.1:55727
+1531153473561	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.iJWDo4cnIqV6"
+1531153476568	Marionette	INFO	Listening on port 44827
+1531153476574	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://127.0.0.1:8000/login.html, line 11: TypeError: document.getElementById(...) is null
+JavaScript error: http://127.0.0.1:8000/login.html, line 1: ReferenceError: back_block is not defined
+JavaScript error: http://127.0.0.1:8000/projects/, line 26: ReferenceError: $ is not defined
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1531153492697	geckodriver	INFO	geckodriver 0.21.0
+1531153492700	geckodriver	INFO	Listening on 127.0.0.1:58225
+1531153493709	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.ytxAgK4e6IhG"
+1531153496751	Marionette	INFO	Listening on port 40819
+1531153496843	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://127.0.0.1:8000/login.html, line 11: TypeError: document.getElementById(...) is null
+JavaScript error: http://127.0.0.1:8000/login.html, line 1: ReferenceError: back_block is not defined
+JavaScript error: http://127.0.0.1:8000/login.html, line 11: TypeError: document.getElementById(...) is null
+JavaScript error: http://127.0.0.1:8000/login.html, line 1: ReferenceError: back_block is not defined
+[Parent 29238, Gecko_IOThread] WARNING: pipe error (72): Connection reset by peer: file /build/firefox-mzzHJ1/firefox-61.0+build3/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1531153794874	geckodriver	INFO	geckodriver 0.21.0
+1531153794877	geckodriver	INFO	Listening on 127.0.0.1:35187
+1531153795883	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.cGII5veJQ6f4"
+1531153799150	Marionette	INFO	Listening on port 33027
+1531153799198	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://127.0.0.1:8000/login.html, line 11: TypeError: document.getElementById(...) is null
+JavaScript error: http://127.0.0.1:8000/login.html, line 1: ReferenceError: back_block is not defined
+JavaScript error: http://127.0.0.1:8000/projects/, line 26: ReferenceError: $ is not defined
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping

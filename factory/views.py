@@ -21,6 +21,9 @@ def time(h,m):
 def timeformat(t):
     return t // 60, t % 60
 
+def reg(request):
+    if not request.user.is_authenticated():
+        return render(request, 'servicefactoryusers/login.html')
 #@never_cache
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='/accounts/login/')
@@ -63,6 +66,7 @@ def login1(request):
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='/accounts/login/')
 def index1(request, pk):
+    reg(request)
     try:
         proj = Project.objects.get(pk = pk)
     except Project.DoesNotExist:
@@ -78,6 +82,7 @@ def index1(request, pk):
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='/accounts/login/')
 def tarea(request, pk):
+    reg(request)
     tarea = get_object_or_404(Tarea, pk=pk)
     storage = messages.get_messages(request)
     print("Hello!!!")
@@ -88,6 +93,7 @@ def tarea(request, pk):
 @login_required(login_url='/accounts/login/')
 def tarea_detail(request, pk):
     global time_implement, choose_project
+    reg(request)
     tarea = get_object_or_404(Tarea, pk=pk)
     if request.method == 'POST':
         horas = request.POST.get('horas', False)

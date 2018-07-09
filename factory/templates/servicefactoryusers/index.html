@@ -35,6 +35,8 @@
 			{% endfor %}
 
     </div>
+		{% else %}
+		<form metho="POST" action = "{% url 'reg' %}"></form>
 		{% endif %}
   </div>
 {% endblock %}

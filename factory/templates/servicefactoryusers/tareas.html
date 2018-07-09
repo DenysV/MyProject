@@ -28,19 +28,20 @@
 
   <div class="container-fluid container-tareas">
     <div class="row ">
-
+			{% if user.is_authenticated %}
 	    <div class="col-md-12 boton">
 	    	<p class="h3">{{project.name}}</p>
 	    </div>
-
-		{% for tarea in tareas %}
+			{% for tarea in tareas %}
     	<div class="col-md-12 boton">
 	      <button class="tarea" onclick="window.location.href='{% url 'tarea_detail' pk=tarea.pk %}'">
 	        <p class="h4">{{ tarea.name }}</p>
 	      </button>
 	  </div>
 		{% endfor %}
-
+		{% else %}
+		<form metho="POST" action = "{% url 'reg' %}"></form>
+		{% endif %}
     </div>
   </div>
 {% endblock %}
