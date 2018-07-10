@@ -59,7 +59,7 @@ def logout(request):
 
     return redirect('login')
     #return render(request, 'servicefactoryusers/login.html')
-
+'''
 def login(request, **kwargs):
     if request.user.is_authenticated():
         print("YES")
@@ -81,7 +81,7 @@ def login(request):
         projects = Project.objects.filter(author = request.user)
         return redirect('projects_back')
     return render(request, 'registration/login.html')
-'''
+
 #@never_cache
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='/accounts/login/')
@@ -125,6 +125,7 @@ def tarea_detail(request, pk):
         return redirect('login')
 
     tarea = get_object_or_404(Tarea, pk=pk)
+    print(tarea.pk)
     if request.method == 'POST':
         horas = request.POST.get('horas', False)
         minutos = request.POST.get('minutos', False)
