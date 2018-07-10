@@ -21,21 +21,33 @@ def time(h,m):
 def timeformat(t):
     return t // 60, t % 60
 
-def reg(request):
+
+def home(request):
+    print("&&&&&&&&&&")
     if not request.user.is_authenticated():
-        return render(request, 'servicefactoryusers/login.html')
+        print("@@@@@@@@@@@@@@@@@")
+        return redirect('login')
+    return redirect('projects_back')
+    #return render(request, 'registration/index.html', {'projects' : projects})
+
 #@never_cache
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='/accounts/login/')
 def projects_back(request):
+    print("Bay!!!!!!")
+    if not request.user.is_authenticated():
+        print('Hay!!!')
+        return redirect('login')
+
     projects = Project.objects.filter(author = request.user)
     print(projects)
-    return render(request, 'servicefactoryusers/index.html', {'projects' : projects})
+    return render(request, 'registration/index.html', {'projects' : projects})
 
 #@never_cache
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='/accounts/login/')
 def logout(request):
+    print("Call logout!!!!")
     for key in list(request.session.keys()):
         del request.session[key]
     auth.logout(request)
@@ -45,11 +57,19 @@ def logout(request):
         from django.contrib.auth.models import AnonymousUser
         request.user = AnonymousUser()
 
-    return redirect('login1')
+    return redirect('login')
     #return render(request, 'servicefactoryusers/login.html')
 
+def login(request, **kwargs):
+    if request.user.is_authenticated():
+        print("YES")
+        return redirect('projects_back')
+    else:
+        return auth_views.login(request, **kwards)
+        print("NO")
+'''
 #@never_cache
-def login1(request):
+def login(request):
     global time_implement
     username = request.POST.get('username', False)
     password = request.POST.get('password', False)
@@ -57,16 +77,18 @@ def login1(request):
     print(username, password)
     print(user)
     if user is not None:
-        login(request, user)
+        auth.login(request, user)
         projects = Project.objects.filter(author = request.user)
         return redirect('projects_back')
-    return render(request, 'servicefactoryusers/login.html')
-
+    return render(request, 'registration/login.html')
+'''
 #@never_cache
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='/accounts/login/')
 def index1(request, pk):
-    reg(request)
+    #reg(request)
+    if not request.user.is_authenticated():
+        return redirect('login')
     try:
         proj = Project.objects.get(pk = pk)
     except Project.DoesNotExist:
@@ -76,24 +98,32 @@ def index1(request, pk):
     print(project)
     choose_project = project
     print('Otra vez', choose_project)
-    return render(request, 'servicefactoryusers/tareas.html',  context = { 'tareas' : tareas })
+    return render(request, 'registration/tareas.html',  context = { 'tareas' : tareas })
 
 #@never_cache
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='/accounts/login/')
 def tarea(request, pk):
-    reg(request)
+    #reg(request)
+
+    if not request.user.is_authenticated():
+        return redirect('login')
+
     tarea = get_object_or_404(Tarea, pk=pk)
     storage = messages.get_messages(request)
     print("Hello!!!")
-    return render(request, 'servicefactoryusers/horas.html', { 'tarea' : tarea, 'message' : storage })
+    return render(request, 'registration/horas.html', { 'tarea' : tarea, 'message' : storage })
 
 #@never_cache
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='/accounts/login/')
 def tarea_detail(request, pk):
     global time_implement, choose_project
-    reg(request)
+    #reg(request)
+
+    if not request.user.is_authenticated():
+        return redirect('login')
+
     tarea = get_object_or_404(Tarea, pk=pk)
     if request.method == 'POST':
         horas = request.POST.get('horas', False)
@@ -138,7 +168,7 @@ def tarea_detail(request, pk):
                 messages.warning(request, 'No puedo hacer esta tarea hoy. Por favor cambia duracion de la tarea.')
                 return redirect('tarea_detail', pk = tarea.pk)
                 #raise forms.ValidationError("No puedo hacer esta tarea hoy. Por favor, cambia el duracion o la fecha de la tarea!")
-    return render(request, 'servicefactoryusers/horas.html', context = { 'tarea' : tarea, 'today' : today })
+    return render(request, 'registration/horas.html', context = { 'tarea' : tarea, 'today' : today })
 '''
 def go_back_tareas(request):
         return redirect('servicefactoryusers/tareas.html')

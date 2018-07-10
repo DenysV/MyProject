@@ -18,16 +18,19 @@ from django.contrib import admin, auth
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib.auth import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^accounts/', include('django.contrib.auth.urls')),
-    #url(r'^accounts/login/$', views.login, name='login'),
-    #url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
+    #url(r'^accounts/', include('django.contrib.auth.urls')),
+    #url('^login/$', auth_views.login, name='login'),
     url(r'', include('factory.urls')),
+    #url(r'^login/$', auth_views.login, name='login'),
+    #url(r'^accounts/login/$', views.login, name='login'),
+    #url('^logout/$', auth_views.logout, name='logout', kwargs={'next_page': '/'}),
 ]
-
+'''
 urlpatterns += [
     url(r'', RedirectView.as_view(url='', permanent=True)),
 ]
+'''

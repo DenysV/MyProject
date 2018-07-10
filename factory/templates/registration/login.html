@@ -1,4 +1,5 @@
 {% load staticfiles %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,7 +50,7 @@
 								<input type="password" class="form-control" id="id_contraseña" placeholder="Contraseña" name = "password" value = '' onfocus="this.value=''" autocomplete="off">
 							</div>
 						</div>
-
+						<input type="hidden" name="next" value="{{ next }}">
 						<button type="submit" name="submit" class="btn btn-primary center-block" value="login" onclick="window.location.href={% url 'projects_back' %}">Entrar</button>
 					</form>
 				</div>

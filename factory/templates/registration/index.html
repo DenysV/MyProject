@@ -1,4 +1,4 @@
-{% extends "servicefactoryusers/pattern.html" %}
+{% extends "registration/pattern.html" %}
 
 {% block content %}
 	<nav class="navbar navbar-default" id="navbar_movil">
@@ -36,7 +36,7 @@
 
     </div>
 		{% else %}
-		<form metho="POST" action = "{% url 'reg' %}"></form>
+		<form metho="POST" action = "{% url 'logout' %}"></form>
 		{% endif %}
   </div>
 {% endblock %}

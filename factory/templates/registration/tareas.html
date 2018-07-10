@@ -1,4 +1,4 @@
-{% extends "servicefactoryusers/pattern.html" %}
+{% extends "registration/pattern.html" %}
 
 {% block content %}
 	<div  id="div_botonanterior_ordenador">
@@ -40,7 +40,7 @@
 	  </div>
 		{% endfor %}
 		{% else %}
-		<form metho="POST" action = "{% url 'reg' %}"></form>
+		<form method="POST" action = "{% url 'login' %}"></form>
 		{% endif %}
     </div>
   </div>
